@@ -1,0 +1,8 @@
+.git
+.lein
+resources
+src
+target/classes
+Procfile
+Makefile
+README.md
