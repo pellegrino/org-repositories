@@ -1,4 +1,5 @@
 (ns repositories.core
+  (:gen-class)
   (:use [cheshire.core :only [generate-string parse-string]]
         [clj-http.lite.client :only [get] :rename {get hget}]
         [overtone.at-at :only [after every mk-pool]]
