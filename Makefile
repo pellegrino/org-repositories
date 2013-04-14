@@ -6,3 +6,9 @@ $(LEIN):
 
 build: $(LEIN)
 	$(LEIN) uberjar
+
+clean: $(LEIN)
+	$(LEIN) clean
+
+mrproper: clean
+	rm -vf $(LEIN)
