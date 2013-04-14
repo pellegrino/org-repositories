@@ -24,9 +24,13 @@
       (wrap-file-info)
       (wrap-index)))
 
+(defn- parse-repos [json]
+  (let [repos (parse-string json)]
+    (map #(select-keys % ["description" "html_url" "name" "private"]) repos)))
+
 (defn- get-repos [url]
   (let [href-fn #(get-in % [:links :next :href])
-        repo-fn #(conj %1 (parse-string (:body %2)))]
+        repo-fn #(conj %1 (parse-repos (:body %2)))]
     (loop [res (hget url) acc []]
       (if (nil? (href-fn res))
         (repo-fn acc res)
