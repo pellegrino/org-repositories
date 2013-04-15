@@ -1,1 +1,5 @@
 .private { background-color: #eee; }
+
+th { text-align: left; }
+
+td.date { white-space: nowrap; }

@@ -24,9 +24,12 @@
       (wrap-file-info)
       (wrap-index)))
 
+(def repo-attributes
+  ["description" "html_url" "name" "private" "pushed_at"])
+
 (defn- parse-repos [json]
   (let [repos (parse-string json)]
-    (map #(select-keys % ["description" "html_url" "name" "private"]) repos)))
+    (map #(select-keys % repo-attributes) repos)))
 
 (defn- get-repos [url]
   (let [href-fn #(get-in % [:links :next :href])

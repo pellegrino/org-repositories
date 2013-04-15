@@ -13,8 +13,15 @@
       <h1>Repositories</h1>
 
       <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Pushed</th>
+          </tr>
+        </thead>
         <tbody id="repositories">
-          <tr><td colspan="2">Loading repositories...</td></tr>
+          <tr><td colspan="3">Loading repositories...</td></tr>
         </tbody>
       </table>
     </div>
@@ -28,6 +35,7 @@
     <script type="text/template" id="repository-view">
       <td><a href="<%= html_url %>"><%= name %></a></td>
       <td><%= description %></td>
+      <td class="date"><%= pushed_at %></td>
     </script>
   </body>
 </html>

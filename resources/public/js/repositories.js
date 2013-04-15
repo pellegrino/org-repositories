@@ -1,6 +1,19 @@
 $(function () {
 
-  var Repository = Backbone.Model.extend({});
+  var Repository = Backbone.Model.extend({
+    format: function () {
+      this.set("pushed_at", this.formatDate(this.get('pushed_at')));
+      return this;
+    },
+
+    formatDate: function (date) {
+      var d = new Date(date),
+          r = [ d.getFullYear(),
+                ("0" + (1 + d.getMonth())).slice(-2),
+                ("0" + d.getDate()).slice(-2) ];
+      return r.join("-");
+    }
+  });
 
   var RepositoryView = Backbone.View.extend({
     tagName: "tr",
@@ -12,7 +25,7 @@ $(function () {
     template: _.template($("#repository-view").html()),
 
     render: function () {
-      $(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).html(this.template(this.model.format().toJSON()));
       return this;
     }
   });
@@ -38,11 +51,13 @@ $(function () {
 
     render: function() {
       var el = $(this.el);
-      el.empty();
-      this.collection.each(function (repository) {
-        var view = new RepositoryView({model: repository});
-        el.append(view.render().el);
-      });
+      if (this.collection.length > 0) {
+        el.empty();
+        this.collection.each(function (repository) {
+          var view = new RepositoryView({model: repository});
+          el.append(view.render().el);
+        });
+      }
     }
   });
 
