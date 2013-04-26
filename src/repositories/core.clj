@@ -25,7 +25,7 @@
       (wrap-index)))
 
 (def repo-attributes
-  ["description" "html_url" "name" "private" "pushed_at"])
+  ["description" "html_url" "name" "private" "pushed_at" "language"])
 
 (defn- parse-repos [json]
   (let [repos (parse-string json)]

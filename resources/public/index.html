@@ -17,6 +17,7 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Language</th>
             <th>Pushed</th>
           </tr>
         </thead>
@@ -35,6 +36,7 @@
     <script type="text/template" id="repository-view">
       <td><a href="<%= html_url %>"><%= name %></a></td>
       <td><%= description %></td>
+      <td class="language"><%= language %></td>
       <td class="date"><%= pushed_at %></td>
     </script>
   </body>
